@@ -15,8 +15,7 @@ build
 # Misc
 .DS_Store
 .env
-.env.local
-.env.*.local
+# .env.local is needed for build - DO NOT ignore
 
 # Git
 .git

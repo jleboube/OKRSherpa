@@ -15,10 +15,11 @@ WORKDIR /app
 # Copy dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
 
-# Copy all source files
+# Copy all source files (includes .env.local if present)
 COPY . .
 
 # Build the application
+# Vite will embed VITE_* env vars from .env.local at build time
 RUN npm run build
 
 # Stage 3: Production runner with Nginx

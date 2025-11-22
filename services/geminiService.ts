@@ -2,8 +2,8 @@ import { GoogleGenAI, Content } from "@google/genai";
 import { Message, ModelType, OKRContext, Sender } from "../types";
 
 // Initialize the client
-// API key must be provided via process.env.API_KEY
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// API key from VITE_GEMINI_API_KEY environment variable
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || '' });
 
 const SYSTEM_INSTRUCTION_BASE = `
 You are the "OKR Sherpa", an expert consultant in Objectives and Key Results (OKRs).

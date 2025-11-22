@@ -7,11 +7,6 @@ services:
     container_name: okr-sherpa-app
     ports:
       - "7337:8080"  # Obscure external port mapping to internal nginx port
-    environment:
-      - NODE_ENV=production
-      - API_KEY=${GEMINI_API_KEY}
-    env_file:
-      - .env.local
     depends_on:
       - mongodb
     restart: unless-stopped
