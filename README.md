@@ -1,6 +1,19 @@
+<div align="center">
+
 # OKR Sherpa
 
+[![Docker](https://img.shields.io/badge/Docker-Compose-blue.svg)](https://docs.docker.com/compose/)
+[![GitHub stars](https://img.shields.io/github/stars/jleboube/OKRSherpa?style=social)](https://github.com/jleboube/OKRSherpa/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/jleboube/OKRSherpa?style=social)](https://github.com/jleboube/OKRSherpa/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/jleboube/OKRSherpa)](https://github.com/jleboube/OKRSherpa/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/jleboube/OKRSherpa)](https://github.com/jleboube/OKRSherpa/pulls)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CCBY--NC--SA4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/muscl3n3rd)
+
 AI-driven Socratic OKR planning assistant powered by Google Gemini.
+
+</div>
 
 ## Quick Start
 
