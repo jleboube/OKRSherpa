@@ -1,6 +1,6 @@
-<div align="center">
-
 # OKR Sherpa
+
+<div align="center">
 
 [![Docker](https://img.shields.io/badge/Docker-Compose-blue.svg)](https://docs.docker.com/compose/)
 [![GitHub stars](https://img.shields.io/github/stars/jleboube/OKRSherpa?style=social)](https://github.com/jleboube/OKRSherpa/stargazers)
@@ -11,9 +11,11 @@
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/muscl3n3rd)
 
+
+
 AI-driven Socratic OKR planning assistant powered by Google Gemini.
 
-[Demo](https://okrsherpa.app) • [Screenshots](#screenshots) • [Features](#features) • [Quick Start](#quick-start) 
+[Demo](https://okrsherpa.app) • [Screenshots](#screenshots) • [Features](#features) • [Quick Start](#quick-start)
 
 
 </div>
