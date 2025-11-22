@@ -13,7 +13,34 @@
 
 AI-driven Socratic OKR planning assistant powered by Google Gemini.
 
+[Demo](https://okrsherpa.app) • [Screenshots](#screenshots) • [Features](#features) • [Quick Start](#quick-start) • 
+
+
 </div>
+
+## Screenshots
+
+OKRSherpa.app Landing Page
+
+![Alt text](docs/os1.png "OKRSherpa.app Landing Page")
+
+OKRSherpa.app benefits
+
+![Alt text](docs/os2.png "OKRSherpa.app benefits")
+
+How OKRSherpa.app works
+
+![Alt text](docs/os-3.png "How OKRSherpa.app works")
+
+
+## Features
+
+- **Socratic OKR Guidance**: AI-powered Socratic questioning to refine objectives
+- **Dual AI Modes**: Fast (Gemini 2.5 Flash Lite) and Deep (Gemini 3.0 Pro)
+- **Context Awareness**: Aligns OKRs with leadership goals and org context
+- **Google OAuth**: Sign in to save your OKR data (mock implementation)
+- **Privacy & Terms**: Complete legal pages included
+
 
 ## Quick Start
 
@@ -45,13 +72,6 @@ docker-compose up -d --build
 # 3. Access at http://localhost:7337
 ```
 
-## Features
-
-- **Socratic OKR Guidance**: AI-powered Socratic questioning to refine objectives
-- **Dual AI Modes**: Fast (Gemini 2.5 Flash Lite) and Deep (Gemini 3.0 Pro)
-- **Context Awareness**: Aligns OKRs with leadership goals and org context
-- **Google OAuth**: Sign in to save your OKR data (mock implementation)
-- **Privacy & Terms**: Complete legal pages included
 
 ## Tech Stack
 
