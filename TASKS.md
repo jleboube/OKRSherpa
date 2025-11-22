@@ -95,10 +95,58 @@ docker-compose up -d
 
 ---
 
+---
+
+## Iteration 2 - Real Google OAuth & Scrolling Fix (Nov 22, 2025)
+
+### Issues Fixed
+
+**Issue 1: Mock OAuth showing "Demo User"**
+- Removed mock authentication
+- Implemented real Google OAuth 2.0 flow
+- Uses implicit grant flow (client-side)
+- Redirects to `/auth/callback` after authentication
+- Fetches user info from Google API
+
+**Issue 2: Terms page frozen/unable to scroll**
+- Problem: `body` had `overflow-hidden` class
+- Solution: Removed `overflow-hidden` from body tag
+- Now allows scrolling on Privacy/Terms pages
+
+### Configuration Required
+
+**Google OAuth Setup:**
+1. Go to https://console.cloud.google.com/apis/credentials
+2. Create OAuth 2.0 Client ID
+3. Add authorized redirect URIs:
+   - Production: `https://okrsherpa.app/auth/callback`
+   - Development: `http://localhost:3000/auth/callback`
+4. Add to `.env.local`:
+   ```bash
+   VITE_GOOGLE_CLIENT_ID=your_client_id.apps.googleusercontent.com
+   ```
+
+### Files Modified
+- `App.tsx` - Implemented real OAuth flow, added callback handler
+- `index.html` - Removed `overflow-hidden` from body
+- `.env.example` - Added `VITE_GOOGLE_CLIENT_ID`
+- `nginx.conf` - Added `/auth/callback` route
+- `README.md` - Updated with OAuth setup instructions
+
+### How OAuth Works Now
+
+1. User clicks "Sign In"
+2. Redirects to Google OAuth consent screen
+3. User approves
+4. Google redirects to `/auth/callback` with access token
+5. App fetches user info from Google API
+6. User data stored in localStorage
+7. Redirects to landing page
+
+---
+
 ## Next Steps
 
-- [ ] Test deployment on remote VM
-- [ ] Verify Cloudflare Tunnel integration
-- [ ] Implement real Google OAuth (replace mock)
-- [ ] Connect MongoDB for user data persistence
+- [ ] Test Google OAuth on production
+- [ ] Connect MongoDB for persistent user data
 - [ ] Add data export functionality

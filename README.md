@@ -56,9 +56,14 @@ Create `.env.local`:
 
 ```bash
 VITE_GEMINI_API_KEY=your_gemini_api_key_here
+VITE_GOOGLE_CLIENT_ID=your_google_client_id.apps.googleusercontent.com
 ```
 
-Get your API key: https://aistudio.google.com/apikey
+**Get API keys:**
+- Gemini API: https://aistudio.google.com/apikey
+- Google OAuth: https://console.cloud.google.com/apis/credentials
+  - Create OAuth 2.0 Client ID
+  - Add authorized redirect URI: `https://okrsherpa.app/auth/callback`
 
 ### Port
 

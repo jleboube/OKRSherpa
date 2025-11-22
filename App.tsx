@@ -54,6 +54,46 @@ export default function App() {
 
   // Check for existing auth on mount
   useEffect(() => {
+    // Handle OAuth callback
+    if (window.location.pathname === '/auth/callback') {
+      const hash = window.location.hash.substring(1);
+      const params = new URLSearchParams(hash);
+      const accessToken = params.get('access_token');
+      const state = params.get('state');
+
+      if (accessToken && state === 'okr_sherpa_auth') {
+        // Fetch user info from Google
+        fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        })
+          .then(res => res.json())
+          .then(userData => {
+            const user = {
+              email: userData.email,
+              name: userData.name
+            };
+            setUser(user);
+            setIsAuthenticated(true);
+            localStorage.setItem('okr_user', JSON.stringify(user));
+
+            // Redirect back to main page
+            window.history.replaceState({}, '', '/');
+            setCurrentPage('landing');
+          })
+          .catch(err => {
+            console.error('Failed to fetch user info:', err);
+            alert('Failed to sign in with Google');
+            window.history.replaceState({}, '', '/');
+          });
+      } else {
+        window.history.replaceState({}, '', '/');
+      }
+      return;
+    }
+
+    // Check for stored user
     const storedUser = localStorage.getItem('okr_user');
     if (storedUser) {
       try {
@@ -66,16 +106,26 @@ export default function App() {
     }
   }, []);
 
-  // Google OAuth login (placeholder - will be replaced with real OAuth)
+  // Google OAuth login
   const handleGoogleLogin = () => {
-    // This is a simplified version. In production, this would redirect to Google OAuth
-    const mockUser = {
-      email: 'user@example.com',
-      name: 'Demo User'
-    };
-    setUser(mockUser);
-    setIsAuthenticated(true);
-    localStorage.setItem('okr_user', JSON.stringify(mockUser));
+    // Redirect to Google OAuth
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+    const redirectUri = `${window.location.origin}/auth/callback`;
+
+    if (!clientId) {
+      console.error('Google Client ID not configured');
+      alert('Google OAuth is not configured. Please add VITE_GOOGLE_CLIENT_ID to .env.local');
+      return;
+    }
+
+    const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?` +
+      `client_id=${clientId}&` +
+      `redirect_uri=${encodeURIComponent(redirectUri)}&` +
+      `response_type=token&` +
+      `scope=${encodeURIComponent('openid profile email')}&` +
+      `state=okr_sherpa_auth`;
+
+    window.location.href = googleAuthUrl;
   };
 
   const handleLogout = () => {
