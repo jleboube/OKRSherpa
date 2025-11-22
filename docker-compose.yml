@@ -1,0 +1,58 @@
+services:
+  # OKR Sherpa Web Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: okr-sherpa-app
+    ports:
+      - "7337:8080"  # Obscure external port mapping to internal nginx port
+    environment:
+      - NODE_ENV=production
+      - API_KEY=${GEMINI_API_KEY}
+    env_file:
+      - .env.local
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+    networks:
+      - okr-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/health.json"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # MongoDB Database for storing user OKR data
+  mongodb:
+    image: mongo:7-jammy
+    container_name: okr-sherpa-mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER:-admin}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD:-changeme123}
+      - MONGO_INITDB_DATABASE=okr_sherpa
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    ports:
+      - "27017:27017"  # Only exposed locally, not needed for production
+    restart: unless-stopped
+    networks:
+      - okr-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+networks:
+  okr-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+    driver: local
+  mongodb_config:
+    driver: local
