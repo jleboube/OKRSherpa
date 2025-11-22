@@ -13,7 +13,7 @@
 
 AI-driven Socratic OKR planning assistant powered by Google Gemini.
 
-[Demo](https://okrsherpa.app) • [Screenshots](#screenshots) • [Features](#features) • [Quick Start](#quick-start) • 
+[Demo](https://okrsherpa.app) • [Screenshots](#screenshots) • [Features](#features) • [Quick Start](#quick-start) 
 
 
 </div>
