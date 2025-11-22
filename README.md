@@ -22,11 +22,11 @@ AI-driven Socratic OKR planning assistant powered by Google Gemini.
 
 OKRSherpa.app Landing Page
 
-![Alt text](docs/os1.png "OKRSherpa.app Landing Page")
+![Alt text](docs/os-1.png "OKRSherpa.app Landing Page")
 
 OKRSherpa.app benefits
 
-![Alt text](docs/os2.png "OKRSherpa.app benefits")
+![Alt text](docs/os-2.png "OKRSherpa.app benefits")
 
 How OKRSherpa.app works
 
